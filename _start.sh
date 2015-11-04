@@ -1,1 +1,1 @@
-node example.js
+node index.js
