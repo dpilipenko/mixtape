@@ -1,15 +1,13 @@
 // Keys
-var connString = "postgres://mixtape@localhost/mixtape";
-
+var config = require('./config');
 var pg = require('pg');
-var Promise = require('bluebird');
 var express = require('express');
 var app = express();
 
 
 // Helpers
 function getVisitCount(callback) {
-  pg.connect(connString, function(err, client, done) {
+  pg.connect(config.connectionString, function(err, client, done) {
     if (err) {
       console.error('error fetching client from pool', err);
       return callback(-1);
@@ -29,7 +27,7 @@ function getVisitCount(callback) {
 }
 
 function addVisit(callback) {
-  pg.connect(connString, function(err, client, done) {
+  pg.connect(config.connectionString, function(err, client, done) {
     if (err) {
       console.error('error fetching client from pool', err);
       callback();
@@ -49,7 +47,7 @@ function addVisit(callback) {
 }
 
 function createVisitsTable() {
- pg.connect(connString, function(err, client, done) {
+ pg.connect(config.connectionString, function(err, client, done) {
    if (err) {
      return console.error('error fetching client from pool', err);
    }
