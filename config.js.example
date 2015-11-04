@@ -1,0 +1,7 @@
+// FILL IN VALUES AND RENAME TO config.js
+
+var config = {};
+
+config.connectionString = "";
+
+module.exports = config;
